@@ -10,5 +10,6 @@ package com.qianyan;
 public class Test {
     public static void main(String[] args) {
         System.out.println("hello qianyan");
+        System.out.println("hello qianyan1");
     }
 }
