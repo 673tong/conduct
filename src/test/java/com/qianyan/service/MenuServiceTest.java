@@ -1,6 +1,6 @@
 package com.qianyan.service;
 
-import com.qianyan.entity.Menu;
+import com.qianyan.entity.Message;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,29 +10,39 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:spring-context.xml")
 public class MenuServiceTest {
-	@Autowired
-	private MenuService menuService;
+
+
+    @Autowired
+    private  MessageService messageService;
 	
 
-    @Ignore
-	@Transactional
-	@Rollback(false)
-	public void saveTest(){
-        Menu menu =new Menu();
-        menu.setName("李振");
-		this.menuService.save(menu);
-	}
+
+
+   // @Ignore
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void saveTestMessage(){
+        Message message = new Message();
+        message.setIp("192.168.1.105");
+        message.setEmail("307970779@qq.com");
+        message.setMessage("hello");
+       // message.setC_time((new Date()).toString());
+        this.messageService.save(message);
+    }
 
     @Test
-    public void getAll(){
-        List<Menu> lists =this.menuService.getAll();
-        for(Menu menu:lists){
-            System.out.println(menu.getId()+""+menu.getName());
+    @Ignore
+    public void getListTop(){
+        List<Message> lists =this.messageService.getListTop(10);
+        for(Message message:lists){
+            System.out.println(message.getIp()+":"+message.getMessage()+":"+message.getC_time());
         }
     }
 }

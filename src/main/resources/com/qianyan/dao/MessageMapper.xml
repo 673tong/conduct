@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianyan.dao.MessageMapper">
+	
+	<insert id="insert" parameterType="com.qianyan.entity.Message">
+		insert into tb_message(ip,message,email,c_time)
+		values(#{ip},#{message,jdbcType=VARCHAR},#{email},now())
+	</insert>
+
+   <select id="getListTop"  parameterType="int"   resultType="com.qianyan.entity.Message">
+       select * from tb_message order by c_time desc limit 0,#{top};
+   </select>
+	
+</mapper>
+	

@@ -8,6 +8,6 @@
 	</settings>
 	
 	<mappers>
-		<mapper resource="com/qianyan/dao/impl/MenuMapper.xml"/>
+        <mapper resource="com/qianyan/dao/MessageMapper.xml"/>
 	</mappers>
 </configuration>
